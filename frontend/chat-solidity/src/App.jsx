@@ -2,9 +2,16 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import { ethers } from "ethers";
 import abi from "./utils/Waveportal.json";
+import Profile from "./components/Profile";
+import Button from "./components/Button";
+import Loader from "./components/Loader";
+import Nameinput from "./components/Nameinput";
 
 function App() {
   const [currentAccount, setCurrentAccount] = useState("");
+  const [accountError, setAccountError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [emptyAccount, setEmptyAccount] = useState(false);
 
   const contractAddress = "0x3c45db73db1a9588c63f312a0b14e3ff45507f2d";
   const contractABI = abi.abi;
@@ -21,17 +28,20 @@ function App() {
       }
 
       //check authorization to user's wallet
-
+      setLoading(true);
       const accounts = await ethereum.request({ method: "eth_accounts" });
       if (accounts.length !== 0) {
         const account = accounts[0];
         console.log("Found an authorized account:", account);
         setCurrentAccount(account);
+        setLoading(false);
       } else {
         console.log("Couldn't find an authorized account");
+        setLoading(false);
       }
     } catch (error) {
-      console.log(error);
+      setAccountError(error);
+      setLoading(false);
     }
   };
 
@@ -41,18 +51,21 @@ function App() {
       const { ethereum } = window;
 
       if (!ethereum) {
-        alert("Get MetaMask!");
+        setAccountError("Errrror");
         return;
       }
+      setLoading(true);
 
       const accounts = await ethereum.request({
         method: "eth_requestAccounts",
       });
 
       console.log("Connected", accounts[0]);
+      setLoading(false);
       setCurrentAccount(accounts[0]);
     } catch (error) {
-      console.log(error);
+      setAccountError(error);
+      setLoading(false);
     }
   };
 
@@ -96,13 +109,33 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <p>Hey there</p>
-      <button onClick={wave}>Wave</button>
-      <div>
-        {!currentAccount && (
-          <button onClick={connectWallet}>Connect Account</button>
+    <div className="App bg-bgWhite h-screen">
+      <div className="flex justify-center items-center pt-24 flex-col">
+        <Profile />
+        {!currentAccount &&
+          (loading ? null : (
+            <Button
+              handleClick={connectWallet}
+              text="Connect to Metamask"
+              type="button"
+              style="mt-8"
+            />
+          ))}
+        {loading && (
+          <div className="relative">
+            <Loader />
+          </div>
         )}
+        {accountError && (
+          <p>
+            Please connect to Metamask, If you don't have, you can get it here
+          </p>
+        )}
+        {currentAccount && <Nameinput />}
+        {/* <button onClick={wave}>Wave</button> */}
+        {/* {!currentAccount && (
+            <button onClick={connectWallet}>Connect Account</button>
+          )} */}
       </div>
     </div>
   );
