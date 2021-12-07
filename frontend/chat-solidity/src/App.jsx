@@ -110,7 +110,7 @@ function App() {
 
   return (
     <div className="App bg-bgWhite h-screen">
-      <div className="flex justify-center items-center pt-24 flex-col">
+      <div className="flex justify-center items-center pt-48 md:pt-24 flex-col">
         <Profile />
         {!currentAccount &&
           (loading ? null : (
