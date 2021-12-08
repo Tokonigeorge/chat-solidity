@@ -10,7 +10,7 @@ const Chat = () => {
         Messages
       </div>
       <ChatArea />
-      <div className="absolute bottom-0 left-0 w-full">
+      <div className="absolute bottom-0 left-0 w-full z-10 bg-bgChat pt-2">
         <Typing />
         <ChatInput />
       </div>

@@ -10,6 +10,12 @@ module.exports = {
         textBlue: "#323B56",
         textGray: "#878D9C",
       },
+      maxWidth: {
+        "1/4": "25%",
+        "1/2": "50%",
+        "1/3": "33.33333",
+        "3/4": "75%",
+      },
     },
   },
   variants: {
