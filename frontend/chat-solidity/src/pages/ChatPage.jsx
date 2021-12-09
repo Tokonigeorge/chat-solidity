@@ -4,12 +4,14 @@ import Chat from "../components/Chat";
 
 const ChatPage = () => {
   return (
-    <div className="flex">
-      <Sidebar />
-      <div className="flex-auto h-screen py-2.5 pr-4">
-        <Chat />
+    <>
+      <div className=" hidden md:flex">
+        <Sidebar />
+        <div className="flex-auto h-screen py-2.5 pr-4">
+          <Chat />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
