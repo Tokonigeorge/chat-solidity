@@ -7,6 +7,7 @@ import Button from "./components/Button";
 import Loader from "./components/Loader";
 import Nameinput from "./components/Nameinput";
 import ChatPage from "./pages/ChatPage";
+import "./styles/scrollbar.css";
 
 function App() {
   const [currentAccount, setCurrentAccount] = useState("");
@@ -110,7 +111,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App bg-bgWhite h-screen overflow-y-hidden">
+    <div className="App bg-bgWhite h-screen md:overflow-y-hidden overflow-y-scroll styleScroll">
       {/* <div className="flex justify-center items-center pt-48 md:pt-24 flex-col">
         <Profile style={"md:w-56 md:h-56 w-32 h-32"}/>
         {!currentAccount &&

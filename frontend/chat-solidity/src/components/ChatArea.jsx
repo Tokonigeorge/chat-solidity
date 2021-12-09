@@ -5,7 +5,7 @@ import SentMessage from "./SentMessage";
 
 const ChatArea = () => {
   return (
-    <div className="h-3/4 overflow-y-scroll styleScroll relative">
+    <div className="md:h-3/4 h-full overflow-y-scroll styleScroll relative">
       <div className="absolute top-0 pt-4 left-0 w-full">
         <ParticipantMessage />
         <ParticipantMessage />
