@@ -14,7 +14,7 @@ const ParticipantMessage = () => {
           alt="profile image"
           className="w-6 h-6 object-cover rounded-full"
         />
-        <Message style={"bg-bgWhite ml-2"} />
+        <Message style={"bg-white ml-2"} />
       </div>
     </div>
   );

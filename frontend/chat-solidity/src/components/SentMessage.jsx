@@ -7,7 +7,7 @@ const SentMessage = () => {
       <p className="text-textBlue font-semibold text-xs pb-2 -mr-14">
         You 11:24 AM
       </p>
-      <Message style="-mr-14 bg-gray-500 bg-opacity-30" />
+      <Message style="-mr-14 bg-gray-300 bg-opacity-50" />
     </div>
   );
 };

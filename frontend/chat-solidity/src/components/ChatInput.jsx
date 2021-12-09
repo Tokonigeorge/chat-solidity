@@ -29,7 +29,7 @@ const Sendicon = () => {
       width={16}
       height={16}
       viewBox="0 0 20 20"
-      fillRule="#ffffff"
+      fillRule="ffffff"
       className=" transform rotate-45"
     >
       <path
