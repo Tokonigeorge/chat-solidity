@@ -112,8 +112,8 @@ function App() {
 
   return (
     <div className="App bg-bgWhite h-screen md:overflow-y-hidden overflow-y-scroll styleScroll">
-      {/* <div className="flex justify-center items-center pt-48 md:pt-24 flex-col">
-        <Profile style={"md:w-56 md:h-56 w-32 h-32"}/>
+      <div className="flex justify-center items-center pt-48 md:pt-24 flex-col">
+        <Profile style={"md:w-56 md:h-56 w-32 h-32"} />
         {!currentAccount &&
           (loading ? null : (
             <Button
@@ -133,13 +133,13 @@ function App() {
             Please connect to Metamask, If you don't have, you can get it here
           </p>
         )}
-        {currentAccount && <Nameinput />} */}
-      {/* <button onClick={wave}>Wave</button> */}
-      {/* {!currentAccount && (
+        {currentAccount && <Nameinput />}
+        {/* <button onClick={wave}>Wave</button> */}
+        {/* {!currentAccount && (
             <button onClick={connectWallet}>Connect Account</button>
           )} */}
-      {/* </div> */}
-      <ChatPage />
+      </div>
+      {/* <ChatPage /> */}
     </div>
   );
 }
