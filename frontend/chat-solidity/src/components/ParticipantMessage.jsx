@@ -2,6 +2,11 @@ import React from "react";
 // import profileImage from "../assets/profile.jpg";
 import Message from "./Message";
 import { getDate } from "../utils/date";
+import imageOne from "../assets/imageOne.png";
+import imageTwo from "../assets/imageTwo.png";
+import imageThree from "../assets/imageThree.png";
+import imageFour from "../assets/imageFour.png";
+import { imageUrl } from "./AvatarPick";
 
 const ParticipantMessage = ({ date, name, message, url }) => {
   return (
@@ -11,7 +16,7 @@ const ParticipantMessage = ({ date, name, message, url }) => {
       </p>
       <div className="flex items-end">
         <img
-          src={url}
+          src={imageUrl(i)}
           alt="profile image"
           className="w-6 h-6 object-cover rounded-full"
         />

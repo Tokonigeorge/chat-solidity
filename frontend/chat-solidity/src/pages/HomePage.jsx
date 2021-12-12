@@ -16,14 +16,14 @@ const HomePage = () => {
   const [loading, setLoading] = useState(false);
   const [emptyAccount, setEmptyAccount] = useState(false);
 
-  const contractAddress = "0x4E018dD923Dfdfa9aecA176Eb4654f1BCE15C794";
+  const contractAddress = "0x9281D493B67AE8E6df9374945c9A57fee5832A2b";
   const contractABI = abi.abi;
 
   const checkWalletConnect = async () => {
     //destructure etereum metamask injects into window
     try {
       const { ethereum } = window;
-      setLoading(true);
+      // setLoading(true);
 
       if (!ethereum) {
         console.log("We don't have the ethereum :/");
@@ -41,15 +41,15 @@ const HomePage = () => {
         dispatch(updateContractAddress(account));
         setCurrentAccount(account);
         allWaves();
-        setLoading(false);
+        // setLoading(false);
       } else {
         console.log("Couldn't find an authorized account");
-        setAccountError(error);
+        // setAccountError(error);
         setLoading(false);
       }
     } catch (error) {
       setAccountError(error);
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
@@ -179,7 +179,9 @@ const HomePage = () => {
         </div>
       )}
       {accountError && (
-        <ErrorMessage text="We have encountered an error, this could be because you don't have the metamask extension installed or ..." />
+        <div className="mt-10 mx-2 md:mt-0 md:mx-0">
+          <ErrorMessage text="We have encountered an error, this could be because you don't have the metamask extension installed or ..." />
+        </div>
       )}
       {currentAccount && !accountError && !loading && <Nameinput />}
     </div>

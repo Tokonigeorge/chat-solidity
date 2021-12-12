@@ -13,7 +13,7 @@ const ChatInput = () => {
   const [{ typing, message, name, waves, chatError, avatar }, dispatch] =
     useDataContextVal();
   const [value, setValue] = useState("");
-  const contractAddress = "0x4E018dD923Dfdfa9aecA176Eb4654f1BCE15C794";
+  const contractAddress = "0x9281D493B67AE8E6df9374945c9A57fee5832A2b";
   const contractABI = abi.abi;
 
   const handleChange = (e) => {

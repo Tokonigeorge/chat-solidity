@@ -5,8 +5,7 @@ export const initialState = {
   waves: [],
   list: [],
   address: "",
-  avatar:
-    "https://cdn-icons.flaticon.com/png/128/4725/premium/4725904.png?token=exp=1639215540~hmac=49068384c1b04bc29213a94873ca5546",
+  avatar: "one",
   chatError: false,
   active: "Participants",
 };
