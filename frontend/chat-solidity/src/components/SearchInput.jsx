@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDataContextVal } from "../context/dataContext";
+import { updateParticipantList } from "../context/actions";
 
 const SearchInput = () => {
+  const [{ list, waves }, dispatch] = useDataContextVal();
+  const [value, setValue] = useState("");
+  const filterList = (arr, value) => {
+    return arr?.filter((v, i, a) => a.findIndex((t) => t.name === value) === i);
+  };
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
   return (
     <div className="w-full flex items-center bg-gray-300 bg-opacity-30 rounded-md mt-4 text-sm">
-      <input
-        type={"search"}
-        placeholder="Search"
-        className="outline-none w-full py-2 px-3 bg-transparent text-textBlue"
-      />
+      <form className="w-full" onSubmit={(e) => e.preventDefault()}>
+        <input
+          type={"text"}
+          placeholder="Search"
+          className="outline-none w-full py-2 px-3 bg-transparent text-textBlue"
+          value={value}
+          onChange={(e) => handleChange(e)}
+        />
+      </form>
       <span className="mr-3 text-bgChat">
         <SearchIcon style={{ textColor: "#EDF0F5" }} />
       </span>

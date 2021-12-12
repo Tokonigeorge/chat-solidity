@@ -3,12 +3,15 @@ import Profile from "./Profile";
 import ParticipantList from "./ParticipantList";
 import "../styles/scrollbar.css";
 import SearchInput from "./SearchInput";
+import { useDataContextVal } from "../context/dataContext";
 
 const Sidebar = ({}) => {
+  const [{ waves, list, avatar }] = useDataContextVal();
+
   return (
     <div className="md:w-80 w-64 h-screen pt-16 overflow-y-scroll styleScroll">
       <div className="flex flex-col items-center">
-        <Profile style={"w-32 h-32"} />
+        <Profile style={"w-32 h-32 ring-opacity-40"} url={avatar} />
         <p className="text-textBlue font-semibold text-xl mt-2">Say hi to me</p>
       </div>
       <div className="mx-4">
@@ -21,16 +24,17 @@ const Sidebar = ({}) => {
           Participants
         </p>
         <div className="mt-4 overflow-y-scroll styleScroll px-4">
-          <ParticipantList />
-          <ParticipantList />
-          <ParticipantList />
-          <ParticipantList />
-          <ParticipantList />
-          <ParticipantList />
-          <ParticipantList />
-          <ParticipantList />
-          <ParticipantList />
-          <ParticipantList />
+          {list?.map((i, indx) => {
+            return (
+              <ParticipantList
+                name={i.name}
+                date={i.timestamp}
+                message={i.message}
+                key={indx}
+                url={i.url}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

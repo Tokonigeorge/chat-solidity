@@ -3,6 +3,7 @@ import ErrorMessage from "./ErrorMessage";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useDataContextVal } from "../context/dataContext";
 import { updateName } from "../context/actions";
+import AvatarPick from "./AvatarPick";
 
 const Nameinput = ({}) => {
   const [{ name }, dispatch] = useDataContextVal();
@@ -48,10 +49,11 @@ const Nameinput = ({}) => {
           maxLength={15}
         />
         {longName && <ErrorMessage text="Make it a shorter name :/" />}
+        <AvatarPick />
         {!emptyInput && (
           <Link to="/chat">
             <p
-              className={`mt-4 w-fulll text-center bg-boldGreen py-2 px-3 rounded-md bg-opacity-60 hover:bg-opacity-70 ease-in text-textBlue font-semibold shadow-md`}
+              className={`mt-4 mb-4 w-fulll text-center bg-boldGreen py-2 px-3 rounded-md bg-opacity-60 hover:bg-opacity-70 ease-in text-textBlue font-semibold shadow-md`}
             >
               Submit
             </p>
