@@ -55,3 +55,5 @@ Deploy with
  npm run dev
  ```
  To run it on localhost.
+ # Deployed site
+ https://web3-chatapp.netlify.app/
