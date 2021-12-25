@@ -4,7 +4,7 @@ import imageOne from "../assets/imageOne.png";
 import imageTwo from "../assets/imageTwo.png";
 import imageThree from "../assets/imageThree.png";
 import imageFour from "../assets/imageFour.png";
-import { imageUrl } from "./AvatarPick";
+// import { imageUrl } from "./AvatarPick";
 
 const Profile = ({ style, url }) => {
   return (
@@ -19,3 +19,15 @@ const Profile = ({ style, url }) => {
 };
 
 export default Profile;
+
+const imageUrl = (i) => {
+  if (i === "one") {
+    return imageOne;
+  } else if (i === "two") {
+    return imageTwo;
+  } else if (i === "three") {
+    return imageThree;
+  } else {
+    return imageFour;
+  }
+};

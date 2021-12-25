@@ -11,7 +11,6 @@ const AvatarPick = () => {
   const avatarUrls = ["one", "two", "three", "four"];
   const handleClick = (i) => {
     dispatch(updateAvatar(i));
-    console.log(avatar);
   };
 
   return (
@@ -36,7 +35,7 @@ const AvatarPick = () => {
 
 export default AvatarPick;
 
-export const imageUrl = (i) => {
+const imageUrl = (i) => {
   if (i === "one") {
     return imageOne;
   } else if (i === "two") {

@@ -4,7 +4,7 @@ import imageOne from "../assets/imageOne.png";
 import imageTwo from "../assets/imageTwo.png";
 import imageThree from "../assets/imageThree.png";
 import imageFour from "../assets/imageFour.png";
-import { imageUrl } from "./AvatarPick";
+// import { imageUrl } from "./AvatarPick";
 
 const ParticipantList = ({ name, message, date, url }) => {
   const cutstringlength = (string, num) => {
@@ -26,3 +26,15 @@ const ParticipantList = ({ name, message, date, url }) => {
 };
 
 export default ParticipantList;
+
+const imageUrl = (i) => {
+  if (i === "one") {
+    return imageOne;
+  } else if (i === "two") {
+    return imageTwo;
+  } else if (i === "three") {
+    return imageThree;
+  } else {
+    return imageFour;
+  }
+};

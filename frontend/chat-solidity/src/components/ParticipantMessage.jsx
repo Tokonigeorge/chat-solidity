@@ -6,7 +6,7 @@ import imageOne from "../assets/imageOne.png";
 import imageTwo from "../assets/imageTwo.png";
 import imageThree from "../assets/imageThree.png";
 import imageFour from "../assets/imageFour.png";
-import { imageUrl } from "./AvatarPick";
+// import { imageUrl } from "./AvatarPick";
 
 const ParticipantMessage = ({ date, name, message, url }) => {
   return (
@@ -16,7 +16,7 @@ const ParticipantMessage = ({ date, name, message, url }) => {
       </p>
       <div className="flex items-end">
         <img
-          src={imageUrl(i)}
+          src={imageUrl(url)}
           alt="profile image"
           className="w-6 h-6 object-cover rounded-full"
         />
@@ -27,3 +27,15 @@ const ParticipantMessage = ({ date, name, message, url }) => {
 };
 
 export default ParticipantMessage;
+
+const imageUrl = (i) => {
+  if (i === "one") {
+    return imageOne;
+  } else if (i === "two") {
+    return imageTwo;
+  } else if (i === "three") {
+    return imageThree;
+  } else {
+    return imageFour;
+  }
+};
