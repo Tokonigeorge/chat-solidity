@@ -4,7 +4,7 @@ import { getDate } from "../utils/date";
 
 const SentMessage = ({ date, message }) => {
   return (
-    <div className="pr-4 flex flex-col items-end pb-4">
+    <div className="pr-4 flex flex-col items-end pb-6">
       <p className="text-textBlue font-semibold text-xs pb-2">
         You, {getDate(date)}
       </p>

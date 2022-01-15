@@ -19,7 +19,7 @@ const ParticipantList = ({ name, message, date, url }) => {
       />
       <div>
         <p className="text-textBlue font-bold">{name}</p>
-        <p className="text-xs text-textGray">{cutstringlength(message, 15)}</p>
+        <p className="text-xs text-textGray">{cutstringlength(message, 35)}</p>
       </div>
     </div>
   );

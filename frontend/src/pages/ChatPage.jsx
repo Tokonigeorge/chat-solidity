@@ -4,36 +4,78 @@ import Chat from "../components/Chat";
 import Topbar from "../components/Topbar";
 import ParticipantList from "../components/ParticipantList";
 import { useDataContextVal } from "../context/dataContext";
-import { updateParticipantList, updateNavActive } from "../context/actions";
-import Loader from "../components/Loader";
+import {
+  updateParticipantList,
+  updateNavActive,
+  updateChatError,
+  updateWaves,
+} from "../context/actions";
 import ErrorMessage from "../components/ErrorMessage";
 import "../styles/nav.css";
+import { ethers } from "ethers";
+import abi from "../utils/Waveportal.json";
 
 const ChatPage = () => {
   const [{ list, waves, name, chatError, active }, dispatch] =
     useDataContextVal();
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const nav = ["Participants", "Messages"];
+  const contractAddress = "0x9281D493B67AE8E6df9374945c9A57fee5832A2b";
+  const contractABI = abi.abi;
+
+  const allWaves = async () => {
+    try {
+      const provider = new ethers.providers.InfuraProvider(
+        "rinkeby",
+        "ed732d8324c44cfebe61d499626ebaf7"
+      );
+
+      const wavePortalContract = new ethers.Contract(
+        contractAddress,
+        contractABI,
+        provider
+      );
+
+      //Call the getAllWaves method from your Smart Contract
+
+      const waves = await wavePortalContract.getAllWaves();
+      const wavesCleaned = waves.map((wave) => {
+        return {
+          address: wave.waver,
+          timestamp: new Date(wave.timestamp * 1000),
+          message: wave.message,
+          name: wave.name,
+          url: wave.pic,
+        };
+      });
+
+      dispatch(updateWaves(wavesCleaned));
+      console.log(waves);
+    } catch (error) {
+      //update the error state if there's an error
+      dispatch(updateChatError(true));
+      console.log(error);
+    }
+    return waves;
+  };
   useEffect(() => {
+    waves.length === 0 && allWaves();
     dispatch(updateParticipantList(filterList(waves)));
-    console.log(waves);
   }, [waves]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 10000);
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setLoading(false);
+  //   }, 2000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   const handleActive = (indx) => {
     dispatch(updateNavActive(indx.target.textContent));
   };
   return (
     <>
-      {loading ? (
-        <Loader />
-      ) : name && !chatError ? (
+      {name && !chatError ? (
         <>
           <div className=" hidden md:flex">
             <Sidebar />
@@ -48,7 +90,7 @@ const ChatPage = () => {
                 {nav?.map((i, indx) => (
                   <a
                     onClick={(indx) => handleActive(indx)}
-                    key={indx}
+                    key={indx + `${i}`}
                     className={`text-sm text-textGray font-bold cursor-pointer link ${
                       indx == 0 ? "pr-3" : "px-3"
                     } ${active === i && "active"}`}
@@ -72,7 +114,7 @@ const ChatPage = () => {
                         name={i.name}
                         date={i.timestamp}
                         message={i.message}
-                        key={indx}
+                        key={indx + `${i}`}
                         url={i.url}
                       />
                     );

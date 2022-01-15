@@ -10,7 +10,7 @@ import imageFour from "../assets/imageFour.png";
 
 const ParticipantMessage = ({ date, name, message, url }) => {
   return (
-    <div className="pl-4 w-full pb-4">
+    <div className="pl-4 w-full pb-6">
       <p className="text-textBlue font-semibold text-xs ml-8 pb-2">
         {name}, {getDate(date)}
       </p>

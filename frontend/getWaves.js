@@ -1,14 +1,16 @@
-const Web3 = require("web3");
-const MyContract = require("./src/utils/Waveportal.json");
+import Web3 from "web3";
+import MyContract from "./src/utils/Waveportal.json";
+
 const address = "0x9281D493B67AE8E6df9374945c9A57fee5832A2b";
 
 export const getAllWaves = async () => {
   try {
     //connect to infura as the provider.
     const web3 = new Web3(
-      new Web3.providers.HttpProvider(
-        "https://rinkeby.infura.io/v3/ed732d8324c44cfebe61d499626ebaf7"
-      )
+      Web3.givenProvider ||
+        new Web3.providers.HttpProvider(
+          "https://rinkeby.infura.io/v3/ed732d8324c44cfebe61d499626ebaf7"
+        )
     );
 
     const myContract = new web3.eth.Contract(MyContract.abi, address);
@@ -25,6 +27,6 @@ export const getAllWaves = async () => {
       };
     });
   } catch (error) {
-    return error;
+    return console.log(error);
   }
 };

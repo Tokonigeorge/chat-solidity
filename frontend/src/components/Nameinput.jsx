@@ -14,6 +14,7 @@ const Nameinput = ({}) => {
   const handleChange = (e) => {
     dispatch(updateName(e.target.value));
     // setValue(e.target.value);
+    //check length of input
     if (e.target.value.length > 0) {
       setEmptyInput(false);
       if (e.target.value.length >= 15) {

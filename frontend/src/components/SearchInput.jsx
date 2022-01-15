@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { useDataContextVal } from "../context/dataContext";
-import { updateParticipantList } from "../context/actions";
 
 const SearchInput = () => {
-  const [{ list, waves }, dispatch] = useDataContextVal();
+  // const [{ list, waves }, dispatch] = useDataContextVal();
   const [value, setValue] = useState("");
-  const filterList = (arr, value) => {
-    return arr?.filter((v, i, a) => a.findIndex((t) => t.name === value) === i);
-  };
+  // const filterList = (arr, value) => {
+  //   return arr?.filter((v, i, a) => a.findIndex((t) => t.name === value) === i);
+  // };
   const handleChange = (e) => {
     setValue(e.target.value);
   };
