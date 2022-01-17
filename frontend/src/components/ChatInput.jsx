@@ -43,28 +43,26 @@ const ChatInput = () => {
         );
 
         let count = await wavePortalContract.getTotalWaves();
-        console.log("Retrieved total wave count...", count.toNumber());
+        // console.log("Retrieved total wave count...", count.toNumber());
 
-        /*
-         * Execute the actual wave from your smart contract
-         */
-        // const waveTxn = await wavePortalContract.wave();
+        // Execute the wave from the smart contract
+
         const waveTxn = await wavePortalContract.wave(message, name, avatar);
-        console.log("Mining...", waveTxn.hash);
+        // console.log("Mining...", waveTxn.hash);
 
         await waveTxn.wait();
-        console.log("Mined -- ", waveTxn.hash);
+        // console.log("Mined -- ", waveTxn.hash);
 
         count = await wavePortalContract.getTotalWaves();
-        console.log("Retrieved total wave count...", count.toNumber());
         allWaves();
       } else {
-        console.log("Ethereum object doesn't exist!");
-        dispatch(updateChatError(true));
+        // console.log("Ethereum object doesn't exist!");
+        // dispatch(updateChatError(true));
+        alert("Transaction not sucessful, try again.");
       }
     } catch (error) {
       // dispatch(updateChatError(true));
-      alert("Transaction not sucessful, try again");
+      alert("Transaction not sucessful, try again.");
     }
   };
 
@@ -80,9 +78,8 @@ const ChatInput = () => {
           signer
         );
 
-        /*
-         * Call the getAllWaves method from your Smart Contract
-         */
+        //Call the getAllWaves method from the Smart Contract
+
         const waves = await wavePortalContract.getAllWaves();
 
         const wavesCleaned = waves.map((wave) => {
@@ -95,9 +92,8 @@ const ChatInput = () => {
           };
         });
 
-        /*
-         * Store our data in React State
-         */
+        //Store the data in React State
+
         dispatch(updateWaves(wavesCleaned));
       } else {
         console.log("Ethereum object doesn't exist!");
@@ -120,9 +116,9 @@ const ChatInput = () => {
   };
 
   return (
-    <div className="mx-4">
+    <div className="mx-4 bg-gray-200 pb-2">
       <form
-        className="flex bg-bgWhite w-full mb-4 rounded-lg"
+        className="flex bg-white w-full mb-2 md:mb-6 rounded-lg"
         onSubmit={(e) => handleSubmit(e)}
       >
         <input

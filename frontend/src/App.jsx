@@ -10,11 +10,13 @@ function App() {
   return (
     <Router>
       <div
-        className={`App bg-bgWhite h-screen md:overflow-y-hidden ${
+        className={`App bg-bgWhite h-screen max-h-screen md:overflow-y-hidden 
+        ${
           active === "Participants"
             ? "overflow-y-scroll styleScroll"
             : "overflow-y-hidden"
-        } `}
+        } 
+        `}
       >
         {/* <ChatPage /> */}
         <Routes>

@@ -8,15 +8,19 @@ const ChatArea = () => {
   const [{ waves, name, address }] = useDataContextVal();
 
   return (
-    <div className="md:h-3/4 h-full overflow-y-scroll styleScroll relative">
-      <div className="absolute top-0 pt-4 left-0 w-full">
+    <div className="md:h-3/4 h-3/4 overflow-y-scroll styleScroll relative">
+      <div className="absolute top-0 pt-4 pb-6 left-0 w-full">
         {waves?.map((i, indx) => {
           return i.address?.toString().toUpperCase() ==
             address?.toString().toUpperCase() ? (
-            <SentMessage key={indx} date={i.timestamp} message={i.message} />
+            <SentMessage
+              key={indx + `${i.message}`}
+              date={i.timestamp}
+              message={i.message}
+            />
           ) : (
             <ParticipantMessage
-              key={indx}
+              key={indx + `${i.message}`}
               date={i.timestamp}
               name={i.name}
               message={i.message}
