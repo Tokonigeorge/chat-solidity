@@ -79,7 +79,7 @@ const HomePage = () => {
     try {
       const provider = new ethers.providers.InfuraProvider(
         "rinkeby",
-        "ed732d8324c44cfebe61d499626ebaf7"
+        import.meta.env.VITE_INFURIAKEY
       );
 
       const wavePortalContract = new ethers.Contract(
